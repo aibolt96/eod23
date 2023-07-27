@@ -23,8 +23,8 @@ module.exports = {
         };
         todoDatabase.push(newObj)
         todoId++
-        res.status(200).send(todoDatabase);
         rollbar.info('New item added to list.')
+        res.status(200).send(todoDatabase);
     },
     getTodo: (req,res) => {
         res.status(200).send(todoDatabase);
@@ -34,8 +34,8 @@ module.exports = {
         const {newTodo} = req.query;
         const todoIndex = todoDatabase.findIndex((todo) => todo.todoId === +id);
         if (todoIndex === -1){
-            res.status(400).send("Todo doesnt exist");
             rollbar.warning('Non-valid index entered.')
+            res.status(400).send("Todo doesnt exist");
             return;
         }
         todoDatabase[todoIndex].todoName = newTodo;
@@ -43,8 +43,8 @@ module.exports = {
     },
     deleteTodo: (req,res) => {
         todoDatabase = [];
-        res.status(200).send(todoDatabase)
         rollbar.critical('Todo list cleared')
+        res.status(200).send(todoDatabase)
     },
 
     addMovie: (req, res) => {
