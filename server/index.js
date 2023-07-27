@@ -6,6 +6,7 @@ const app = express();
 app.use(cors());
 
 app.use(express.json());
+app.use(express.static(`public`))
 
 const { getCompliment, getFortune, getMagicEight, getMovie, addMovie, editMovie, deleteMovie,
 getTodo, addTodo, editTodo, deleteTodo} = require('./controller')
