@@ -60,10 +60,10 @@ const addTodo = (event) => {
     };
     axios
     .post(`${baseUrl}/api/todo`, null, {params: todoBody})
-    rollbar.warning('New list item added.')
     .then((res) => todoItem(res.data))
     .catch((err) => console.log(err))
     newTodo.value = '';
+    rollbar.warning('New list item added.')
 };
 
 const editTodo = (event) => {
@@ -72,9 +72,9 @@ const editTodo = (event) => {
     .put(`${baseUrl}/api/todo/${todoID.value}?newTodo=${changeTodo.value}`)
     .then((res) => todoItem(res.data))
     .catch((err) => console.log(err))
-    rollbar.warning('List item edited.')
     todoID.value = '';
     changeTodo.value = '';
+    rollbar.warning('List item edited.')
 }
 
 
