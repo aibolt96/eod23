@@ -1,4 +1,4 @@
-const baseUrl = `http://localhost:4000`;
+const baseUrl = `http://13.58.164.189/`;
 const complimentBtn = document.getElementById("complimentButton")
 const fortuneBtn = document.getElementById("fortuneButton")
 const magicQuestion = document.querySelector("#magic-question")
@@ -135,7 +135,7 @@ const editMovies = (event) => {
 
 
 const getCompliment = () => {
-    axios.get("http://localhost:4000/api/compliment/")
+    axios.get(`${baseUrl}/api/compliment/`)
         .then(res => {
             const data = res.data;
             alert(data);
