@@ -60,6 +60,7 @@ const addTodo = (event) => {
     };
     axios
     .post(`${baseUrl}/api/todo`, null, {params: todoBody})
+    rollbar.warning('New list item added.')
     .then((res) => todoItem(res.data))
     .catch((err) => console.log(err))
     newTodo.value = '';
@@ -71,6 +72,7 @@ const editTodo = (event) => {
     .put(`${baseUrl}/api/todo/${todoID.value}?newTodo=${changeTodo.value}`)
     .then((res) => todoItem(res.data))
     .catch((err) => console.log(err))
+    rollbar.warning('List item edited.')
     todoID.value = '';
     changeTodo.value = '';
 }
@@ -81,6 +83,7 @@ const deleteMovie = (id) => {
         .delete(`${baseUrl}/api/movie/${id}`)
         .then((res) => movieDisplay(res.data))
         .catch((err) => console.log(err));
+        rollbar.critical('Movie Deleted.')    
 };
 
 movieDisplay = (movieArray) => {
@@ -172,6 +175,7 @@ magicQuestion.addEventListener('keydown', (event) => {
 document.addEventListener("DOMContentLoaded", function() {
     getMovie
     getTodo
+    rollbar.info('User has entered main page.')
 })
 addMovieButton.addEventListener('click', addMovies)
 editMovieButton.addEventListener('click', editMovies)
