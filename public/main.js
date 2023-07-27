@@ -1,4 +1,4 @@
-const baseUrl = `http://13.58.164.189/`;
+const baseUrl = `http://13.58.164.189`;
 const complimentBtn = document.getElementById("complimentButton")
 const fortuneBtn = document.getElementById("fortuneButton")
 const magicQuestion = document.querySelector("#magic-question")
