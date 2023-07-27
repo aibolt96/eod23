@@ -1,3 +1,5 @@
+const Rollbar = require("rollbar")
+
 const movieDatabase = []
 let todoDatabase= []
 
@@ -12,6 +14,7 @@ module.exports = {
         };
         todoDatabase.push(newObj)
         todoId++
+        rollbar.info('New item added to list.')
         res.status(200).send(todoDatabase);
     },
     getTodo: (req,res) => {
@@ -22,6 +25,7 @@ module.exports = {
         const {newTodo} = req.query;
         const todoIndex = todoDatabase.findIndex((todo) => todo.todoId === +id);
         if (todoIndex === -1){
+            rollbar.warning('Non-valid index entered.')
             res.status(400).send("Todo doesnt exist");
             return;
         }
@@ -30,6 +34,7 @@ module.exports = {
     },
     deleteTodo: (req,res) => {
         todoDatabase = [];
+        rollbar.critical('Todo list cleared')
         res.status(200).send(todoDatabase)
     },
 

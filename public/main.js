@@ -63,7 +63,6 @@ const addTodo = (event) => {
     .then((res) => todoItem(res.data))
     .catch((err) => console.log(err))
     newTodo.value = '';
-    rollbar.warning('New list item added.')
 };
 
 const editTodo = (event) => {
@@ -74,7 +73,6 @@ const editTodo = (event) => {
     .catch((err) => console.log(err))
     todoID.value = '';
     changeTodo.value = '';
-    rollbar.warning('List item edited.')
 }
 
 
@@ -82,8 +80,7 @@ const deleteMovie = (id) => {
     axios
         .delete(`${baseUrl}/api/movie/${id}`)
         .then((res) => movieDisplay(res.data))
-        .catch((err) => console.log(err));
-        rollbar.critical('Movie Deleted.')    
+        .catch((err) => console.log(err));   
 };
 
 movieDisplay = (movieArray) => {
