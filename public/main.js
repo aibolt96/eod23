@@ -17,6 +17,16 @@ const todoID = document.querySelector("#todoID")
 const changeTodo = document.querySelector("#changeTodo")
 const editList = document.querySelector("#editList")
 const clearList = document.querySelector("#clearList")
+const Rollbar = require("rollbar")
+
+var rollbar = new Rollbar({
+    accessToken: 'a998601f1c814ca7be85b37e7ff873cc',
+    captureUncaught: true,
+    captureUnhandledRejections: true,
+  })
+  
+  // record a generic message and send it to Rollbar
+  rollbar.log('Hello world!')
 
 const deleteTodo = () => {
     axios
